@@ -1,6 +1,6 @@
 package mobi.zishun;
 
-public class Recursion {
+public class RecursionExamples {
     //从大到小依次打印整数到0为止
     private static void countDown(int i) {
         System.out.println(i);
