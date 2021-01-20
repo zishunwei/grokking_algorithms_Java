@@ -19,7 +19,8 @@ public class Recursion {
     }
 
     public static void main(String[] args) {
-        //countDown(5);
+        countDown(3);
+        System.out.println(".............");
         System.out.println(factorial(4));
     }
 }
