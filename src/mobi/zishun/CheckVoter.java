@@ -3,6 +3,7 @@ package mobi.zishun;
 import java.util.HashMap;
 import java.util.Map;
 
+// 哈希表/散列表的ava实现
 public class CheckVoter {
     private static Map<String, Boolean> voted = new HashMap<>();
 
