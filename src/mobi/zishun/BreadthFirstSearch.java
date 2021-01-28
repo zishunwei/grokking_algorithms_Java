@@ -8,7 +8,7 @@ public class BreadthFirstSearch {
     private static String breadthFirstSearch(String name) {
         Queue<String> searchQueue = new ArrayDeque<>(graph.get(name));
         // This list is how you keep track of which people you've searched before.
-        List<String> searched = new ArrayList<>();
+        List<String> searched = new ArrayList<>(); //优化算法：避免重复判断同一个人情况（人脉交叉情况）
 
         while (!searchQueue.isEmpty()) {
             String person = searchQueue.poll(); //poll() 移除和返回队列的头
