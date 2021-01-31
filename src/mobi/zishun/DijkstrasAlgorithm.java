@@ -15,12 +15,12 @@ public class DijkstrasAlgorithm {
 
         for (String node : costs.keySet()) {
             int cost = costs.get(node);
-            if (cost < lowestCost && !processed.contains(node)) {
+            if (lowestCost > cost && !processed.contains(node)) {
                 lowestCost = cost;
                 lowestCostNode = node;
             }
         }
-        return lowestCostNode;
+        return lowestCostNode; //如果processed数组中已包含所有节点，将返回null
     }
 
     public static void main(String[] args) {
@@ -36,7 +36,7 @@ public class DijkstrasAlgorithm {
         graph.get("b").put("a", 3);
         graph.get("b").put("fin", 5);
         //节点fin（终点）
-        graph.put("fin", new HashMap<>()); //钟点没有任何邻居
+        graph.put("fin", new HashMap<>()); //终点没有任何邻居
 //        System.out.println(graph.get("start").get("a")); //6
 //        System.out.println(graph.get("start").keySet()); //[a,b]
 
@@ -63,14 +63,14 @@ public class DijkstrasAlgorithm {
 
             for (String n : neighbours.keySet()) {
                 int newCost = cost + neighbours.get(n);
-                if (costs.get(n) > newCost) {
+                if (newCost < costs.get(n)) { //判断经过node节点的新路径是否小于原路径
                     costs.put(n, newCost);
-                    parents.put(n, node);
+                    parents.put(n, node); //修改正在遍历节点的父节点到目前所在的node节点
                 }
             }
             processed.add(node);
 
-            node = findLowestCostNode(costs);
+            node = findLowestCostNode(costs); //继续处理更新后的costs的剩余node，遍历到所有节点都处理过（在processes数组中）
         }
 
         System.out.println(costs);
